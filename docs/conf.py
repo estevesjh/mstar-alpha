@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'mstar'
+project = 'mstar-alpha'
 copyright = '2022, Johnny H. Esteves'
 author = 'Johnny H. Esteves'
 

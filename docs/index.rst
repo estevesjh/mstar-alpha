@@ -5,7 +5,7 @@ Mstar is a fast and precise stellar mass estimator for the Dark Energy Survey (D
 The algorithm consists of a machine learning code based on the Artificial Neural Networks (ANN) architecture. 
 The estimator was trained on the DES deep fields matched with the COSMOS dataset.
 Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
-For more information about the validation process take a look at `Esteves et al. 2023 <https://arxiv.org/>`.
+For more information about the validation process take a look at `Esteves et al. 2023 <https://arxiv.org/>`_.
 
 How to use 
 ------------
