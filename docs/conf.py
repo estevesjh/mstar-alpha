@@ -17,9 +17,9 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'galpro'
-copyright = '2021, Sunil Mucesh'
-author = 'Sunil Mucesh'
+project = 'mstar'
+copyright = '2022, Johnny H. Esteves'
+author = 'Johnny H. Esteves'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1.0'

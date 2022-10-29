@@ -1,24 +1,24 @@
-Galpro
-======
+Mstar: ML Stellar Mass Estimator
+=======================================
 
-Galpro is a novel Python machine learning code based on the Random Forest algorithm for estimating 
-multivariate posterior probability distributions of galaxy properties (e.g. redshift, stellar mass,
-star formation rate, metallicity).
+Mstar is a fast and precise stellar mass estimator for the Dark Energy Survey (DES) galaxies. 
+The algorithm consists of a machine learning code based on the Artificial Neural Networks (ANN) architecture. 
+The estimator was trained on the DES deep fields matched with the COSMOS dataset.
+Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
+For more information about the validation process take a look at `Esteves et al. 2023 <https://arxiv.org/>`.
 
-.. figure:: images/example_plot.png
-   :width: 400 
+How to use 
+------------
 
-Joint redshift - stellar mass posterior PDF
-(See `Mucesh et al. 2020 <https://arxiv.org/abs/2012.05928>`_).
-
+The input information is simply the galaxy redshift colors and the z-band magnitude.
 
 Installation
 ------------
-Galpro is hosted on PyPI and can be installed using::
+Mstar-alpha is hosted on PyPI and can be installed using::
 
-   pip install galpro
+   pip install Mstar-alpha
 
-The latest source code is available on `GitHub <https://github.com/smucesh/galpro>`_.
+The latest source code is available on `GitHub <https://github.com/estevesjh/Mstar-alpha>`_.
 
 
 Getting started
@@ -35,12 +35,12 @@ Galpro is built on top of other excellent Python packages such as:
 - `joblib <https://joblib.readthedocs.io/en/latest/>`_: for saving and loading a trained random forest model.
 - `h5py <https://joblib.readthedocs.io/en/latest/>`_: for reading and writing PDFs to disk.
 
+This code was inspired on galpro: `GitHub <https://github.com/smucesh/galpro>`_.
 
 Citation
 --------
-If you use Galpro in your research, please include a citation to this work
-(`Mucesh et al. 2020 <https://arxiv.org/abs/2012.05928>`_) in any of your publications.
-
+Don't forget to cite this work If you use Mstar 
+(`Esteves et al. 2023 <https://arxiv.org/>`_) in any of your publications.
 
 .. toctree::
    :maxdepth: 2
