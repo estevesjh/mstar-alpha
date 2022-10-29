@@ -7,8 +7,7 @@ The estimator was trained on the DES deep fields matched with the COSMOS dataset
 Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
 For more information about the validation process take a look at [Esteves et al. 2023](https://arxiv.org/)
 
-How to use 
-=====
+## How to use 
 
 The input information is simply the galaxy redshift colors and the z-band magnitude.
 
