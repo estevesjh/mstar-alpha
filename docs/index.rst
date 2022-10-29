@@ -35,7 +35,7 @@ Galpro is built on top of other excellent Python packages such as:
 - `joblib <https://joblib.readthedocs.io/en/latest/>`_: for saving and loading a trained random forest model.
 - `h5py <https://joblib.readthedocs.io/en/latest/>`_: for reading and writing PDFs to disk.
 
-This code was inspired on galpro: `GitHub <https://github.com/smucesh/galpro>`_.
+This code was inspired on `galpro <https://github.com/smucesh/galpro>`_.
 
 Citation
 --------
