@@ -12,10 +12,11 @@ import joblib
 
 
 from .plot import Plot
-from .utils import load_cosmos_sample, create_directories
+from .utils import load_cosmos_sample, create_directories, get_project_root
 from .conf import set_ann_params
 
-default_model_fname =  {'smass':'./data/model/ann', 'quenching': './data/model/classifier_ann'}
+root = get_project_root()
+default_model_fname =  {'smass':root+'/data/model/ann.pkl', 'quenching': root+'/data/model/classifier_ann.pkl'}
 
 
 class Mstar:
@@ -39,7 +40,7 @@ class Mstar:
 
         # Initialise arguments
         self.kind = kind
-        self.outdir = outdir
+        self.outdir = root
         
         # default ANN model file
         if model_fname is None:

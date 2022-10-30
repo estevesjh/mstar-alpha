@@ -4,6 +4,9 @@ import h5py
 import numpy as np
 from scipy.stats import entropy, kstest, median_abs_deviation, cramervonmises
 
+from pathlib import Path
+def get_project_root() -> Path:
+    return Path(__file__).absolute().parent.parent
 
 def create_directories(path):
     # Define directories
@@ -11,20 +14,9 @@ def create_directories(path):
     plot_folder = 'plots/'
 
     # Create model directory
-    os.mkdir(path, exist_ok = True)
-    os.mkdir(path + model_folder, exist_ok = True)
-    os.mkdir(path + plot_folder, exist_ok = True)
-
-def convert_1d_arrays(*arrays):
-    """Convert given 1d arrays from shape (n,) to (n, 1) for compatibility with code."""
-
-    arrays = list(arrays)
-    for i in np.arange(len(arrays)):
-        array = arrays[i]
-        if array is not None:
-            arrays[i] = arrays[i].reshape(-1, 1)
-
-    return arrays
+    os.makedirs(path, exist_ok = True)
+    os.makedirs(path + model_folder, exist_ok = True)
+    os.makedirs(path + plot_folder, exist_ok = True)
 
 def load_cosmos_sample(kind='smass', path='./data/'):
     """Loads COSMOS training/test data."""
@@ -37,6 +29,17 @@ def load_cosmos_sample(kind='smass', path='./data/'):
     ix = np.where(kind=='smass', 1, 0)
     
     return x_train, y_train[:,ix], x_test, y_test[:,ix]
+
+def convert_1d_arrays(*arrays):
+    """Convert given 1d arrays from shape (n,) to (n, 1) for compatibility with code."""
+
+    arrays = list(arrays)
+    for i in np.arange(len(arrays)):
+        array = arrays[i]
+        if array is not None:
+            arrays[i] = arrays[i].reshape(-1, 1)
+
+    return arrays
 
 def load_posteriors(path):
     """Loads saved posteriors."""

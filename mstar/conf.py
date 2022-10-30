@@ -4,7 +4,7 @@ import matplotlib as mpl
 """Configuration file"""
 
 
-def set_ann_params():
+def set_ann_params(kind):
     """
     All hyperparameters for the ann algorithm can be tuned here. For a detailed description of each hyperparameter
     please visit: https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html.
@@ -13,6 +13,7 @@ def set_ann_params():
     params = {'hidden_layer_sizes': (100,),
               'activation': 'relu'
               }
+    return params
 
 def set_rf_params():
     """
