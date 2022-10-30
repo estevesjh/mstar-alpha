@@ -26,7 +26,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     project_urls={
-                   "readthedocs": "https://mstar-alpha.readthedocs.io/",
+                   "readthedocs": " https://mstar-alpha.readthedocs.io/en/latest/",
                    "GitHub": "https://github.com/estevesjh/mstar-alpha",
                    "arXiv": "https://arxiv.org/"
                 }

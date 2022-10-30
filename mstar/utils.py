@@ -1,10 +1,8 @@
 from sys import exit
 import os
-import h5py
 import numpy as np
-from scipy.stats import entropy, kstest, median_abs_deviation, cramervonmises
-
 from pathlib import Path
+
 def get_project_root() -> Path:
     return Path(__file__).absolute().parent.parent
 
