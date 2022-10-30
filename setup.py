@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='mstar',
+    name='mstar-alpha',
     version='0.0.1',
     packages=['mstar'],
     install_requires=['numpy', 'scikit-learn>=0.22.1', 'joblib', 'h5py',

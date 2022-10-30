@@ -4,6 +4,16 @@ import matplotlib as mpl
 """Configuration file"""
 
 
+def set_ann_params():
+    """
+    All hyperparameters for the ann algorithm can be tuned here. For a detailed description of each hyperparameter
+    please visit: https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html.
+    The most important hyperparameters are hidden_layer_sizes, activation='relu'.
+    """
+    params = {'hidden_layer_sizes': (100,),
+              'activation': 'relu'
+              }
+
 def set_rf_params():
     """
     All hyperparameters for the random forest algorithm can be tuned here. Galpro uses the implementation of the
