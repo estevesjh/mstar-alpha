@@ -1,1 +1,1 @@
-from .model import Mstar
+from .mstar import Mstar
