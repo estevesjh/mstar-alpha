@@ -57,16 +57,16 @@ class Mstar:
         if os.path.isfile(self.model_folder+self.model_name) & (not rebuild):
             # load model here
             self.model = joblib.load(self.model_fname)
-            print(f'Loaded model {self.model_name}')
+            print('Loaded model {model}'.format(model=self.model_name))
         elif rebuild:
             print('Rebuilding model. It might take few seconds.')
             self.rebuild()
             
-            print('Created default model file succsefully: {default_model_fname[self.kind]}')
+            print('Created default model file succsefully: {dfname}'.format(default_model_fname[self.kind]))
             
         else:
-            print('Model error: {self.model_fname} file not found. To run Mstar specify the correct model path/name.')
-            print('If there is no {default_model_fname[self.kind]}, set rebuild to True')    
+            print('Model error: {fname} file not found. To run Mstar specify the correct model path/name.'.format(fname=self.model_fname))
+            print('If there is no {dfname}, set rebuild to True'.format(dfname=default_model_fname[self.kind]))    
             exit()
 
     def predict(self, X):
