@@ -1,23 +1,23 @@
+import sys
 import os
-import gc
-import atexit
-
-from sys import exit
-
+import pickle
+from pathlib import Path
 import numpy as np
-from scipy import sparse
 from sklearn.neural_network import MLPRegressor, MLPClassifier
 
-import joblib
-
-
-from .plot import Plot
-from .utils import load_cosmos_sample, create_directories, get_project_root
+# local folder
+from .utils import get_project_root, load_cosmos_sample, create_directories
+from .utils import write_model, load_model
 from .conf import set_ann_params
 
+# package root path
 root = get_project_root()
 default_model_fname =  {'smass':root+'/data/model/ann.pkl', 'quenching': root+'/data/model/classifier_ann.pkl'}
 
+# todos:
+# make plot functions
+# test on python 2
+# review api
 
 class Mstar:
     """
@@ -32,15 +32,13 @@ class Mstar:
     model_fname: st, optional
         Sets the model filename to be loaded. Default filename is `./models/ann3`.
         
-    outdir: bool, optional
-        The path to save the estimated values, plots and the model.
+    root: bool, optional
+        The root path to load the models and the data. Also, it saves plots and new models.
     """
 
-    def __init__(self, kind='smass', model_fname=None, rebuild=False, root='./data'):
-
+    def __init__(self, kind='smass', model_fname=None, rebuild=False, root=root):
         # Initialise arguments
         self.kind = kind
-        self.outdir = root
         
         # default ANN model file
         if model_fname is None:
@@ -49,20 +47,21 @@ class Mstar:
         self.model_fname = model_fname
         
         # Define directory paths
-        self.path = root
-        self.plot_folder = root+'plots/'
-        self.model_folder = root+'model/'
+        self.path = root+'/data/'
+        self.lib_folder = self.path+'/lib/'
+        self.plot_folder = self.path+'plots/'
+        self.model_folder = self.path+'model/'
 
         # Check if model_name exists
-        if os.path.isfile(self.model_folder+self.model_name) & (not rebuild):
+        if os.path.isfile(self.model_fname) & (not rebuild):
             # load model here
-            self.model = joblib.load(self.model_fname)
-            print('Loaded model {model}'.format(model=self.model_name))
+            self.model = load_model(self.model_fname)
+            print('Loaded model {model}'.format(model=self.model_fname))
         elif rebuild:
             print('Rebuilding model. It might take few seconds.')
             self.rebuild()
             
-            print('Created default model file succsefully: {dfname}'.format(default_model_fname[self.kind]))
+            print('Created default model file succsefully: {dfname}'.format(dfname=default_model_fname[self.kind]))
             
         else:
             print('Model error: {fname} file not found. To run Mstar specify the correct model path/name.'.format(fname=self.model_fname))
@@ -89,19 +88,22 @@ class Mstar:
         y_pred = self.model.predict(self.x_test)
 
         # Update class variables
-        self.plot.y_pred = y_pred
+        #self.plot.y_pred = y_pred
         
-        if self.kind=='quenching':
-            # quenching probability
-            y_pred = y_pred[:,0]
+#         if self.kind=='quenching':
+#             # quenching probability
+#             y_pred = y_pred[:,0]
         
         return y_pred
     
     def rebuild(self):
-        self.path = './data/'
+        """rebuild fitted model
+        """
+        # set default fname
         self.model_fname = default_model_fname[self.kind]
-        
+        # load training files
         self.load_training_sample()
+        # fit data and save the model
         self.fit(self.x_train, self.y_train, save_model=True)
     
     def fit(self, X, y, ann_params=None, save_model=True):
@@ -126,8 +128,6 @@ class Mstar:
         """
         # Create the model directory
         create_directories(self.path)
-
-        self.load_training_sample()
         
         if ann_params is None:
             # Get random forest hyperparameters
@@ -143,31 +143,29 @@ class Mstar:
                 
         # Save model
         if save_model:
-            joblib.dump(self.model, self.model_fname)
+            write_model(self.model, self.model_fname)
             print('Saved model')
-
-        # # Initialise external classes
-        # self.plot = Plot(y_test=self.y_test, y_pred=None, posteriors=None, target_features=self.target_features,
-        #                  validation=None, no_samples=self.no_samples, no_features=self.no_features, path=self.path)
-
-        # @atexit.register
-        # def end():
-        #     for obj in gc.get_objects():
-        #         if isinstance(obj, h5py.File):
-        #             obj.close()
 
     # External Class functions
     def load_training_sample(self):
-        x_train, y_train, x_test, y_test = load_cosmos_sample(self.kind, './data/')
-        
-        # set training and test variables
+        x_train, y_train = load_cosmos_sample('train', self.kind, self.lib_folder)
+        # set training variables
         self.x_train = x_train
         self.y_train = y_train
+        pass
         
+    def load_test_sample(self):
+        x_test, y_test = load_cosmos_sample('test', self.kind, self.lib_folder)
         self.x_test = x_test
         self.y_test = y_test
         pass
-        
+
+    def load_target_sample(self):
+        x_test, y_test = load_cosmos_sample('target', self.kind, self.lib_folder)
+        self.x_target = x_test
+        self.y_tartet = y_test
+        pass
+
     def plot_scatter(self, show=False, save=True):
         print('Creating scatter plots...')
         return self.plot.plot_scatter(show=show, save=save)
