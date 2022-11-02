@@ -5,7 +5,7 @@ import numpy as np
 from pathlib import Path
 
 def get_project_root():
-    return str(Path(os.getcwd()).absolute().parent)
+    return str(Path(__file__).absolute().parent.parent)
 
 def load_cosmos_sample(label,kind='smass', path='./data/lib/'):
     """Loads COSMOS training/test data."""

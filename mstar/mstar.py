@@ -85,14 +85,7 @@ class Mstar:
             An array of predicted values with size n
         """
         # Use the model to make predictions on new objects
-        y_pred = self.model.predict(self.x_test)
-
-        # Update class variables
-        #self.plot.y_pred = y_pred
-        
-#         if self.kind=='quenching':
-#             # quenching probability
-#             y_pred = y_pred[:,0]
+        y_pred = self.model.predict(X)
         
         return y_pred
     
@@ -163,7 +156,7 @@ class Mstar:
     def load_target_sample(self):
         x_test, y_test = load_cosmos_sample('target', self.kind, self.lib_folder)
         self.x_target = x_test
-        self.y_tartet = y_test
+        self.y_target = y_test
         pass
 
     def plot_scatter(self, show=False, save=True):
