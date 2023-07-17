@@ -6,7 +6,7 @@ The algorithm consists of a machine learning code based on the Artificial Neural
 
 The code was trained on the DES deep fields matched with the COSMOS dataset.
 Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
-For more information about the validation process take a look at [Esteves et al. 2023](https://arxiv.org/)
+For more information about the validation process take a look at [in prep. Esteves et al. 2023](https://arxiv.org/)
 
 ## To Do
 - Make Plot Functions
