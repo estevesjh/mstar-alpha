@@ -8,6 +8,10 @@ The code was trained on the DES deep fields matched with the COSMOS dataset.
 Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
 For more information about the validation process take a look at [in prep. Esteves et al. 2023](https://arxiv.org/)
 
+## R&D Plots
+You can check out some validation plots made during the R&D phase.
+* [slides](https://docs.google.com/presentation/d/1MWpNyx8WYaev5RCfey_I5J8qFgCv5M5Vou5DiAl1JiA/edit?usp=sharing)
+
 ## To Do
 - Make Plot Functions
 - Check python2 compatibility
