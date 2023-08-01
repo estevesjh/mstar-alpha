@@ -9,7 +9,7 @@ Our results were cross validated with a local volume sample, the SDSS sample mat
 For more information about the validation process take a look at [in prep. Esteves et al. 2023](https://arxiv.org/)
 
 ## R&D Plots
-You can check out some validation plots made during the R&D phase.
+You can check out some validation plots made during fall at Fermilab 2022.
 * [slides](https://docs.google.com/presentation/d/1MWpNyx8WYaev5RCfey_I5J8qFgCv5M5Vou5DiAl1JiA/edit?usp=sharing)
 
 ## To Do
