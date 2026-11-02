@@ -9,7 +9,8 @@ The algorithm consists of a machine learning code based on the Artificial Neural
 The code was trained on the DES deep fields matched with the COSMOS dataset.
 Our results were cross validated with a local volume sample, the SDSS sample matched with DES.
 For more information about the validation process take a look at my [Ph.D. thesis (Esteves 2024, University of Michigan)](https://deepblue.lib.umich.edu/items/d53efa35-442c-421f-ae2e-a952bf047e84).
-In the thesis, Mstar matches reference stellar masses to about 0.06 dex (roughly 15%) for the nearby SDSS sample and about 0.11 dex (roughly 30%) in the deeper COSMOS field, out to redshift 2..
+In the thesis, Mstar matches reference stellar masses to about 0.06 dex (roughly 15%) for the nearby SDSS sample and about 0.11 dex (roughly 30%) in the deeper COSMOS field, out to redshift 2.
+
 ## R&D Plots
 You can check out some validation plots made during fall at Fermilab 2022.
 * [slides](https://docs.google.com/presentation/d/1MWpNyx8WYaev5RCfey_I5J8qFgCv5M5Vou5DiAl1JiA/edit?usp=sharing)
